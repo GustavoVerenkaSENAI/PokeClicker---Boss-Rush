@@ -1,0 +1,524 @@
+/* Configuração Geral */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+}
+
+/* Variáveis */
+:root {
+  --bg-color: #1a1a2e;
+  --panel-bg: #16213e;
+  --accent-color: #e94560;
+  --text-color: #ffffff;
+  --gold: #f8b400;
+  --hp-green: #4ccd99;
+  --crit-yellow: #fffa65;
+}
+
+/* Layout */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr 1fr;
+  gap: 20px;
+  flex: 1;
+  max-height: calc(100vh - 70px);
+  padding: 20px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: hidden;
+  background-color: var(--panel-bg);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  padding-bottom: 10px;
+  color: var(--gold);
+  border-bottom: 2px solid #0f3460;
+  font-size: 1.3rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Barra Superior */
+.top-bar {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #0f3460;
+  padding: 15px;
+  border-bottom: 3px solid var(--accent-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.stat-box .value {
+  color: var(--gold);
+}
+
+/* Loja */
+.shop-subtitle {
+  margin-top: -10px;
+  color: #a9a9a9;
+  font-size: 0.85rem;
+}
+
+.shop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.shop-list::-webkit-scrollbar,
+.pokedex-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.shop-list::-webkit-scrollbar-thumb,
+.pokedex-grid::-webkit-scrollbar-thumb {
+  background: #0f3460;
+  border-radius: 4px;
+}
+
+.upgrade-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f3460;
+  padding: 12px;
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  transition: transform 0.1s;
+}
+
+.upgrade-item:hover {
+  background-color: #14427a;
+  transform: translateX(4px);
+}
+
+.upgrade-info strong {
+  display: block;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.upgrade-info p {
+  margin: 3px 0;
+  color: #4ccd99;
+  font-size: 0.8rem;
+}
+
+.upgrade-info small {
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.btn-buy {
+  min-width: 85px;
+  background-color: var(--accent-color);
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn-buy:hover:not(:disabled) {
+  background-color: #ff577f;
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+.btn-buy:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.btn-buy:disabled {
+  background-color: #555;
+  border: 1px solid #444;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* Arena */
+.battle-arena {
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #0f3460;
+  text-align: center;
+}
+
+.timer-box {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 8px 25px;
+  border: 2px solid #0f3460;
+  border-radius: 25px;
+  color: var(--gold);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.pokemon-name {
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hp-container {
+  position: relative;
+  width: 85%;
+  height: 30px;
+  overflow: hidden;
+  background-color: #333;
+  border: 2px solid #555;
+  border-radius: 15px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hp-bar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--hp-green);
+  transition: width 0.1s linear, background-color 0.3s;
+}
+
+.hp-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+}
+
+.sprite-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 230px;
+  cursor: pointer;
+}
+
+.pokemon-sprite {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.5));
+  transition: transform 0.05s;
+}
+
+.pokemon-sprite:active,
+.shake {
+  filter: brightness(1.4);
+  transform: scale(0.85) rotate(-5deg);
+}
+
+.crit-shake {
+  filter: drop-shadow(0 0 15px var(--crit-yellow)) brightness(1.7) !important;
+  animation: critAnim 0.2s ease-in-out;
+}
+
+@keyframes critAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15) rotate(10deg); }
+  100% { transform: scale(1); }
+}
+
+.crit-warning {
+  color: var(--crit-yellow);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px var(--accent-color);
+  animation: bounce 0.3s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+.instruction {
+  color: #a9a9a9;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Pokédex */
+.pokedex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  align-content: flex-start;
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.pokedex-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #0f3460;
+  padding: 4px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s, border-color 0.2s;
+}
+
+.pokedex-icon:hover {
+  border-color: var(--gold);
+  transform: scale(1.15);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal:not(.hidden) {
+  display: flex !important;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  background: linear-gradient(135deg, #16213e, #0f3460);
+  padding: 20px;
+  border: 3px solid var(--gold);
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  background: var(--accent-color);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+}
+
+.modal-header {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.modal-img {
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.types-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.type-badge {
+  background-color: var(--accent-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.stat-name {
+  width: 110px;
+  color: #a9a9a9;
+  font-weight: bold;
+}
+
+.stat-val {
+  width: 35px;
+  color: var(--gold);
+  font-weight: bold;
+  text-align: right;
+}
+
+.stat-bar-bg {
+  flex: 1;
+  height: 10px;
+  margin: 0 10px;
+  overflow: hidden;
+  background-color: #333;
+  border-radius: 5px;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background-color: var(--hp-green);
+}
+/* Barra de Pesquisa da Pokédex */
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #0f3460;
+  border: 2px solid #1f4068;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input::placeholder {
+  color: #a9a9a9;
+}
+
+.search-input:focus {
+  border-color: var(--gold);
+}
+
+/* Botão de Favorito no Modal */
+.btn-fav {
+  background-color: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 8px 0;
+  transition: all 0.2s;
+}
+
+.btn-fav:hover {
+  background-color: rgba(248, 180, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.btn-fav.favoritado {
+  background-color: var(--gold);
+  color: #1a1a2e;
+}
+
+/* Brilho especial no ícone do Pokémon Favoritado na Pokédex */
+.pokedex-icon.fav-icon {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, #0f3460, #53341c);
+  box-shadow: 0 0 8px rgba(248, 180, 0, 0.6);
+}
+/* Responsividade */
+@media (max-width: 1100px) {
+  .game-container {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .battle-arena {
+    order: -1;
+  }
+
+  .shop-list,
+  .pokedex-grid {
+    max-height: 350px;
+  }
+}
+/* Numeros Flutuantes Dano*/
+.dano-flutuante {
+  position: absolute;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.4rem;
+  pointer-events: none; /*garante que o numero nao atrapalhe os cliques no pokemon */
+  text-shadow: 2px 2px 4px #000, -1px -1px 0 #000, -1px 1px 0 #000;
+  z-index: 100;
+  animation: flutuarESumir 0.8s ease-out forwards;
+}
+
+/* Estilo especial para o ataque critico */
+.dano-flutuante.critico {
+  color: var(--crit-yellow);
+  font-size: 2.2rem;
+  z-index: 101;
+}
+
+@keyframes flutuarESumir {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.8);
+  }
+  50% {
+    transform: translateY(-35px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translatey(-70px) scale(0.9);
+  }
+} 
