@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="banner.gif" alt="Banner do Projeto" width="600">
+  <img src="banner.png" alt="Banner do Projeto" width="600">
 </p>
 
 <h1 align="center">PokeClicker - Boss Rush</h1>
