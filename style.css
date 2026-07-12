@@ -521,4 +521,29 @@ h2 {
     opacity: 0;
     transform: translatey(-70px) scale(0.9);
   }
-} 
+}
+
+.critico-particula {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 1;
+  pointer-events: none; /* garante que nao bloqueie os cliques */
+
+  /* a Animacao usa 'forwards' para manter o estado final com opacidade 0 */
+  animation: critParticula 0.6 ease-out forwards;
+}
+
+/* Animacao de explosao */
+@keyframes critParticula {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    /* As variaveis --dx e --dy vao ser aleatorias pelo JS */
+    transform: translate(var(--dx), var(--dy) scale(0));
+    opacity: 0;
+  }
+}

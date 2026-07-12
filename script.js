@@ -128,6 +128,11 @@ function atacarPokemon(evento) {
     dano *= 3;
     sprite.classList.add("crit-shake");
     aviso.classList.remove("hidden");
+
+
+    //criar a explosa do clique
+    criarParticulasCriticas(evento.pageX, evento.pageY);
+    
     setTimeout(() => {
       sprite.classList.remove("crit-shake");
       aviso.classList.add("hidden");
@@ -430,5 +435,39 @@ function carregar() {
     }
 
     atualizarPokedex();
+  }
+}
+
+//Funcao para criar as particulas do critico
+function criarParticulasCriticas(x, y) {
+  //container para as particulas serem inseridas
+  const container = document.body;
+
+  for(let i = 0; i < 20; i++){
+    const particula = document.createElement('span');
+    particula.classList.add('critico-particula');
+
+    //define direcao e velocidade aleatoria
+    const angulo = Math.random() * Math.PI * 2; //0 a 360 graus
+    const velocidade = 100 + Math.random() * 150; // Velocidade aleatoria
+
+    particula.style.setProperty('--dx', `${Math.cos(angulo) * velocidade}px`);
+    particula.style.setProperty('--dy', `${Math.sin(angulo) * velocidade}px`);
+
+    //Define uma cor aleatoria
+    const cor = i % 2 === 0 ? 'var(--crit-yellow)' : 'var(--accent-color)';
+    particula.style.backgroundColor = cor;
+
+    //posiciona a particula bem em cima do local do clique
+    particula.style.left = `${x}px`;
+    particula.style.top = `${y}px`;
+
+    //adiciona ao container
+    container.appendChild(particula);
+
+    //remove a tag HTML para n pesar
+    setTimeout(() => {
+      particula.remove();
+    }, 600);
   }
 }
