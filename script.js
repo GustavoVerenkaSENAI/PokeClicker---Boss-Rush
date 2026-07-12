@@ -1,4 +1,4 @@
-// Estado do jogo
+// Estado do jogo 
 const game = {
   moedas: 0,
   danoClique: 1,
