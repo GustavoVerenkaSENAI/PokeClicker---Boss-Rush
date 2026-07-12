@@ -5,14 +5,14 @@
 <h1 align="center">PokeClicker - Boss Rush</h1>
 
 <p align="center">
-  Um jogo estilo clicker no navegador onde você enfrenta Pokémon em tempo real, compra melhorias e monta sua própria Pokédex usando dados reais da PokéAPI!
+  Um jogo estilo clicker no navegador onde você enfrenta Pokémon em tempo real, compra melhorias e monta sua própria Pokédex usando dados reais da PokéAPI.
 </p>
 
 ---
 
 ## Sobre o projeto
 
-O **PokeClicker - Boss Rush** é um joguinho estilo clicker feito em HTML, CSS e JavaScript puro (sem frameworks ou coisas complicadas). A ideia principal é simples: você entra em uma arena e tem um tempo limite para derrotar o Pokémon selvagem que aparecer na tela clicando nele o mais rápido possível!
+O **PokeClicker - Boss Rush** é um joguinho estilo clicker feito em HTML, CSS e JavaScript puro (sem frameworks ou coisas complicadas). A ideia principal é simples: você entra em uma arena e tem um tempo limite para derrotar o Pokémon selvagem que aparecer na tela clicando nele o mais rápido possível.
 
 O legal é que o jogo consome a **PokéAPI**, então toda batalha é surpresa. Você pode encontrar qualquer Pokémon da 1ª até a 5ª geração, com as imagens oficiais e com a vida do boss calculada baseada nos status reais de cada monstrinho.
 
@@ -20,7 +20,7 @@ Se o tempo acabar antes de você zerar a barra de vida dele, o Pokémon foge e o
 
 ---
 
-## O que tem de legal no jogo
+## O que tem no jogo
 
 * **Batalhas contra o tempo (Boss Rush):** Você tem 45 segundos para vencer cada batalha. É preciso clicar rápido e saber a hora certa de comprar melhorias!
 * **Vida e recompensas dinâmicas:** A quantidade de vida dos inimigos e as moedas que você ganha dependem da força real de cada Pokémon lá na API.
@@ -38,7 +38,7 @@ Se o tempo acabar antes de você zerar a barra de vida dele, o Pokémon foge e o
 
 ## Como foi feito
 
-Esse projeto foi construído do zero focando em treinar lógica de programação, consumo de APIs e manipulação de tela, usando apenas o kit básico do desenvolvimento web:
+Esse projeto foi construído do zero para um desafio aplicado por uma professora, as ferramentas usadas incluem:
 
 * **HTML5:** Para montar toda a estrutura do site, da arena de batalha até os modais da Pokédex.
 * **CSS3:** Para deixar o visual limpo, responsivo (funciona bem em telas menores) e fazer as animações dos cliques e do texto flutuando.
@@ -49,7 +49,7 @@ Esse projeto foi construído do zero focando em treinar lógica de programação
 
 ## Como jogar no seu PC
 
-Você não precisa instalar nenhum programa complexo ou servidor para rodar o jogo no seu computador. Só precisa de um navegador web comum!
+Você não precisa instalar nenhum programa complexo ou servidor para rodar o jogo no seu computador. Só precisa de um navegador web comum.
 
 1. Baixe os arquivos do projeto aqui do GitHub (ou faça o clone com o comando abaixo no terminal):
    ```bash
@@ -62,7 +62,7 @@ Você não precisa instalar nenhum programa complexo ou servidor para rodar o jo
 3. Dê dois cliques no arquivo `index.html` para abrir direto no seu navegador (Chrome, Edge, Firefox, etc.).
 4. Se você estiver usando o VS Code, pode usar a extensão **Live Server** para abrir o projeto com recarregamento automático.
 
-Prontinho, já pode começar a clicar!
+Prontinho, já pode começar a clicar.
 
 ---
 
