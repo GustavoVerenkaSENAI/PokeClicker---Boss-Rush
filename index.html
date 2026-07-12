@@ -29,6 +29,7 @@
       <span class="label">Bônus de Moedas:</span>
       <span id="ui-bonus-moeda" class="value">+0%</span>
     </div>
+    <button id="btn-config" class="config-btn">⚙️</button>
   </header>
 
   <main class="game-container">
@@ -73,8 +74,8 @@
 
   <div id="modal-pokemon" class="modal hidden" style="display: none;">
     <div class="modal-content">
-      <button id="btn-fechar-modal" class="close-btn">X</button>
-      
+      <button id="btn-fechar-modal" class="close-btn">X</button>    
+
       <div class="modal-header">
         <img id="modal-sprite" src="" alt="Sprite" class="modal-img">
         <h2 id="modal-nome">NOME DO POKÉMON</h2>
@@ -88,6 +89,31 @@
         <h3>Estatísticas Base</h3>
         <div id="modal-stats" class="stats-grid"></div>
       </div>
+    </div>
+  </div>
+  <div id="modal-config" class="modal hiden" style="display: none;">
+    <div class="modal-content">
+      <button id="btn-fechar-config" class="close-btn" onclick="fecharModalConfig()">X</button>
+      <h2>Configurações</h2>
+
+      <div class="config-group">
+      <label for="select-geracao">Limitar até qual Geração?</label>
+      <select id="select-geracao" class="search-input">
+        <option value="151">1ª Geração (Kanto - 151 Pokémons)</option>
+        <option value="251">2ª Geração (Johto - 251 Pokémons)</option>
+        <option value="386">3ª Geração (Hoenn - 386 Pokémons)</option>
+        <option value="493">4ª Geração (Sinnoh - 493 Pokémons)</option>
+        <option value="649" selected>5ª Geração (Unova - 649 Pokémons)</option>
+      </select>
+    </div>
+
+    <div class="config-group">
+      <label for="select-tema">Tema da Interface</label>
+      <select id="select-tema" class="search-input">
+        <option value="padrao">Padrão Escuro</option>
+        <option value="claro">Claro - Azul</option>
+      </select>
+    </div>
     </div>
   </div>
 

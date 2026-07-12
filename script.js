@@ -11,6 +11,10 @@ const game = {
   tempo: 45,
   timer: null,
   loopCps: null,
+  config: {
+    maxPokemonId: 649,
+    tema: 'padrao'
+  },
   upgrades: [
     { id: 'clique_1', nome: 'Treino de Força', desc: '+1 Dano por Clique', custoBase: 10, custoAtual: 10, nivel: 0, tipo: 'clique', valor: 1, multCusto: 1.5 },
     { id: 'clique_2', nome: 'Luvas de Foco', desc: '+5 Dano por Clique', custoBase: 100, custoAtual: 100, nivel: 0, tipo: 'clique', valor: 5, multCusto: 1.6 },
@@ -50,6 +54,20 @@ function configurarEventos() {
   document.getElementById("modal-pokemon").addEventListener("click", (e) => {
     if (e.target.id === "modal-pokemon") fecharModal();
   });
+
+  document.getElementById("btn-config").addEventListener("click", abrirModalConfig);
+  document.getElementById("btn-fechar-config").addEventListener("click", fecharModalConfig);
+
+  document.getElementById("select-geracao").addEventListener("change", (e) => {
+    game.config.maxPokemonId = parseInt(e.target.value);
+    salvar();
+  });
+
+  document.getElementById("select-tema").addEventListener("change", (e) => {
+    game.config.tema = e.target.value;
+    document.body.setAttribute("data-theme", game.config.tema);
+    salvar()
+  })
 }
 
 // Pokémon
@@ -60,7 +78,7 @@ async function carregarPokemon() {
   document.getElementById("ui-loading").classList.remove("hidden");
   document.getElementById("ui-nome-pokemon").innerText = "Buscando...";
 
-  const id = Math.floor(Math.random() * 649) + 1;
+  const id =  Math.floor(Math.random() * game.config.maxPokemonId) + 1;
 
   try {
     const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -132,7 +150,7 @@ function atacarPokemon(evento) {
 
     //criar a explosa do clique
     criarParticulasCriticas(evento.pageX, evento.pageY);
-    
+
     setTimeout(() => {
       sprite.classList.remove("crit-shake");
       aviso.classList.add("hidden");
@@ -407,6 +425,7 @@ function salvar() {
     bonusMoedas: game.bonusMoedas,
     chanceCritico: game.chanceCritico,
     pokedex: game.pokedex,
+    config: game.config,
     upgrades: game.upgrades.map(u => ({ id: u.id, nivel: u.nivel, custoAtual: u.custoAtual }))
   };
   localStorage.setItem("PokeClickerSave_v2", JSON.stringify(dados));
@@ -423,6 +442,13 @@ function carregar() {
     game.bonusMoedas = dados.bonusMoedas || 0;
     game.chanceCritico = dados.chanceCritico || 0;
     game.pokedex = dados.pokedex || [];
+
+    if(dados.config) {
+      game.config = dados.config;
+      document.getElementById("select-geracao").value = game.config.maxPokemonId;
+      document.getElementById("select-tema").value = game.config.tema;
+      document.body.setAttribute("data-theme", game.config.tema);
+    }
 
     if (dados.upgrades) {
       dados.upgrades.forEach(upSalvo => {
@@ -470,4 +496,18 @@ function criarParticulasCriticas(x, y) {
       particula.remove();
     }, 600);
   }
+}
+//abrir o modal config
+function abrirModalConfig() {
+  const modal = document.getElementById("modal-config");
+  modal.style.display = "flex";
+  modal.classList.remove("hidden");
+}
+//fechar o modal config
+function fecharModalConfig() {
+
+  const modal = document.getElementById("modal-config");
+
+  modal.style.display = "none";
+  modal.classList.add("hidden");
 }
