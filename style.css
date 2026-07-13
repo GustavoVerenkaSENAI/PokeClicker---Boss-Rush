@@ -7,7 +7,7 @@
   user-select: none;
 }
 
-/* Temas */
+/* Temas disponiveis no btn-config */
 body[data-theme="padrao"], body {
   --bg-color: #1a1a2e;
   --panel-bg: #16213e;
@@ -26,7 +26,7 @@ body[data-theme="claro"], body {
   --hp-green: #22c55e;
   --crit-yellow: #fde047;
 }
-/*Estilo do botao de engrenagem da config */
+/*Estilo do botao de engrenagem para o btn-config */
 .config-btn {
   background: transparent;
   border: none;

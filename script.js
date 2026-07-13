@@ -70,7 +70,7 @@ function configurarEventos() {
   })
 }
 
-// Pokémon
+// Buscar Pokémon com async e try
 async function carregarPokemon() {
   clearInterval(game.timer);
 
@@ -132,6 +132,7 @@ function iniciarTimer() {
   }, 1000);
 }
 
+//funçao para atacar o pokemon ao clicar nele
 function atacarPokemon(evento) {
   if (!game.pokemon || game.pokemon.vida <= 0) return;
 
@@ -148,7 +149,7 @@ function atacarPokemon(evento) {
     aviso.classList.remove("hidden");
 
 
-    //criar a explosa do clique
+    //criar a explosao do clique
     criarParticulasCriticas(evento.pageX, evento.pageY);
 
     setTimeout(() => {
@@ -221,7 +222,7 @@ function verificarBatalha() {
   }
 }
 
-// Loja
+// Loja dos upgrades
 function atualizarLoja() {
   const lista = document.getElementById("ui-loja-lista");
   lista.innerHTML = "";
@@ -247,6 +248,7 @@ function atualizarLoja() {
   });
 }
 
+//funçao para comprar upgrade
 function comprarUpgrade(index) {
   const up = game.upgrades[index];
 
