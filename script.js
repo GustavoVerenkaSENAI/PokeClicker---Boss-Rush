@@ -432,7 +432,7 @@ function salvar() {
   };
   localStorage.setItem("PokeClickerSave_v2", JSON.stringify(dados));
 }
-
+//Ler os dados do json do localstorage e restaurar os dados
 function carregar() {
   const salvo = localStorage.getItem("PokeClickerSave_v2");
   if (salvo) {
@@ -447,9 +447,6 @@ function carregar() {
 
     if(dados.config) {
       game.config = dados.config;
-      document.getElementById("select-geracao").value = game.config.maxPokemonId;
-      document.getElementById("select-tema").value = game.config.tema;
-      document.body.setAttribute("data-theme", game.config.tema);
     }
 
     if (dados.upgrades) {
@@ -461,9 +458,14 @@ function carregar() {
         }
       });
     }
-
-    atualizarPokedex();
   }
+
+  //fora do if para nao bugar na hora do localstorage
+  document.getElementById("select-geracao").value = game.config.maxPokemonId;
+  document.getElementById("select-tema").value = game.config.tema;
+  document.body.setAttribute("data-theme", game.config.tema);
+
+  atualizarPokedex();
 }
 
 //Funcao para criar as particulas do critico
