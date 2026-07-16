@@ -73,7 +73,6 @@ Como o projeto está sempre evoluindo, aqui estão algumas coisas que pretendo a
 * Adicionar efeitos sonoros para os ataques, compras na loja e músicas de fundo para a batalha.
 * Colocar mais fundos de arena e GIFs temáticos para deixar o visual ainda mais imersivo.
 * Criar um sistema de conquistas (por exemplo: derrotar 100 chefes, juntar 10.000 moedas, capturar 50 Pokémon).
-* Adicionar um filtro para você escolher qual geração de Pokémon quer enfrentar na arena.
 
 ---
 
